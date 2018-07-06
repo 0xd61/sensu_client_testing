@@ -1,0 +1,54 @@
+{
+    "checks": {
+      "cpu-checks": {
+        "type": "metric",
+        "command": "check-cpu.rb --proc-path /host_proc",
+        "subscribers": [
+          "production"
+        ],
+        "interval": 10,
+        "handler": "debug",
+        "standalone": true
+      },
+      "memory-checks-percent": {
+        "type": "metric",
+        "command": "check-memory-percent.rb -w 70 -c 80",
+        "subscribers": [
+          "production"
+        ],
+        "interval": 10,
+        "handler": "debug",
+        "standalone": true
+      },
+      "memory-checks": {
+        "type": "metric",
+        "command": "check-memory.rb -w 1000 -c 500",
+        "subscribers": [
+          "production"
+        ],
+        "interval": 10,
+        "handler": "debug",
+        "standalone": true
+      },
+      "network-checks-ping": {
+        "type": "metric",
+        "command": "check-ping.rb -h www.google.com",
+        "subscribers": [
+          "production"
+        ],
+        "interval": 10,
+        "handler": "debug",
+        "standalone": true
+      },
+      "network-checks-thoughput": {
+        "type": "metric",
+        "command": "metrics-netif.rb",
+        "subscribers": [
+          "production"
+        ],
+        "interval": 10,
+        "handler": "debug",
+        "standalone": true
+      }
+    }
+}
